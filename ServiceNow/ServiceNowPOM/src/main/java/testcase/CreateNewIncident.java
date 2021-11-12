@@ -21,7 +21,7 @@ public class CreateNewIncident extends ProjectSpecificMethods {
 		new LoginPage().enterUsername("admin").enterPassword("qjX0QPUtYvb6").clickOnLoginButton().enterSearchText()
 				.clickOnAllIncident().switchToframe().clickOnNewButton().getNewIncidentNumber().selectCaller(caller).enterShotDesc(desc)
 				.clickOnSubmitButton().selectSearchField().enterSearchValueAfterCreate().clickOnIncident();
-// Comment 
+// Comment 1
 	}
 
 }
