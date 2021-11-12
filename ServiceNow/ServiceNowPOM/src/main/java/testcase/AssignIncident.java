@@ -20,6 +20,8 @@ public class AssignIncident extends ProjectSpecificMethods {
 	public void updateIncident(String incidentNumber) throws InterruptedException, IOException {
 		new LoginPage().enterUsername("admin").enterPassword("qjX0QPUtYvb6").clickOnLoginButton().enterSearchText()
 				.clickOnAllIncident().switchToframe().selectSearchField().searchIncident(incidentNumber).selectAssignmentGroup().updateWorkNotes().clickOnUpdate();
+		
+		//Comment
 	}
 
 }
