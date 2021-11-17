@@ -5,34 +5,38 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import base.ProjectSpecificMethods;
+import io.cucumber.java.en.Then;
 
 public class AllIncidentHomePage extends ProjectSpecificMethods {
-
+	
+	@Then("Switch to frame")
 	public AllIncidentHomePage switchToframe() {
-		driver.switchTo().frame("gsft_main");
+		getDriver().switchTo().frame("gsft_main");
 
 		return this;
 
 	}
 
+	@Then("Click on New Button")
 	public CreateIncident clickOnNewButton() {
 
-		driver.findElementById("sysverb_new").click();
+		getDriver().findElementById("sysverb_new").click();
 
 		return new CreateIncident();
 
 	}
 
+	@Then("Select the search field")
 	public AllIncidentHomePage selectSearchField() {
 		try {
-			WebElement dropdown = driver.findElementByXPath("//select[@class='form-control default-focus-outline']");
+			WebElement dropdown = getDriver().findElementByXPath("//select[@class='form-control default-focus-outline']");
 
 			Select searchDropdown = new Select(dropdown);
 
 			searchDropdown.selectByVisibleText("Number");
 
 		} catch (Exception e) {
-			WebElement dropdown = driver.findElementByXPath("//select[@class='form-control default-focus-outline']");
+			WebElement dropdown = getDriver().findElementByXPath("//select[@class='form-control default-focus-outline']");
 
 			Select searchDropdown = new Select(dropdown);
 
@@ -44,12 +48,13 @@ public class AllIncidentHomePage extends ProjectSpecificMethods {
 
 	}
 
+	@Then("Enter the search value after create")
 	public AllIncidentHomePage enterSearchValueAfterCreate() {
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(incidentNo);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(incidentNo);
 
 		System.out.println(incidentNo);
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
 
 		return this;
 
@@ -57,13 +62,13 @@ public class AllIncidentHomePage extends ProjectSpecificMethods {
 
 	public IncidentDetailsPage searchIncident(String incidentNumber) {
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(incidentNumber);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(incidentNumber);
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
 		try {
-			driver.findElementByXPath("//a[text() = '" + incidentNumber + "']").click();
+			getDriver().findElementByXPath("//a[text() = '" + incidentNumber + "']").click();
 		} catch (Exception e) {
-			if (driver.findElementByXPath("//td[text()='No records to display']").isDisplayed()) {
+			if (getDriver().findElementByXPath("//td[text()='No records to display']").isDisplayed()) {
 				System.out.println("Incident is not available");
 			}
 		}
@@ -71,9 +76,10 @@ public class AllIncidentHomePage extends ProjectSpecificMethods {
 		return new IncidentDetailsPage();
 
 	}
-
+	
+	@Then("Click on Incident")
 	public IncidentDetailsPage clickOnIncident() {
-		driver.findElementByXPath("//a[text() = '" + incidentNo + "']").click();
+		getDriver().findElementByXPath("//a[text() = '" + incidentNo + "']").click();
 
 		return new IncidentDetailsPage();
 

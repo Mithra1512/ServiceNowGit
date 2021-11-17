@@ -3,15 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="testcase.ResolveIncident">
+      <class name="testcase.CreateNewIncident">
         <methods>
+          <include name="createNewIncident" invocation-numbers="0 1"/>
           <include name="setFilename"/>
           <include name="closeApp"/>
-          <include name="launchApp"/>
-          <include name="updateIncident" invocation-numbers="0 1"/>
           <include name="writeToexcel"/>
+          <include name="launchApp"/>
         </methods>
-      </class> <!-- testcase.ResolveIncident -->
+      </class> <!-- testcase.CreateNewIncident -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

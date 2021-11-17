@@ -12,7 +12,7 @@ import base.ProjectSpecificMethods;
 public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	public IncidentDetailsPage updateUrgency() {
-		Select urgencyDropdown = new Select(driver.findElementByName("incident.urgency"));
+		Select urgencyDropdown = new Select(getDriver().findElementByName("incident.urgency"));
 
 		urgencyDropdown.selectByVisibleText("1 - High");
 
@@ -21,7 +21,7 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 	}
 
 	public IncidentDetailsPage updateState(String state) {
-		Select stateDropdown = new Select(driver.findElementByName("incident.state"));
+		Select stateDropdown = new Select(getDriver().findElementByName("incident.state"));
 
 		stateDropdown.selectByVisibleText(state);
 
@@ -30,7 +30,7 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 	}
 
 	public IncidentDetailsPage checkPriority() {
-		Select priorityDropdown = new Select(driver.findElementByName("incident.priority"));
+		Select priorityDropdown = new Select(getDriver().findElementByName("incident.priority"));
 
 		String priority = priorityDropdown.getFirstSelectedOption().getText();
 
@@ -42,18 +42,18 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 	}
 
 	public AllIncidentHomePage clickOnUpdate() {
-		driver.findElementById("sysverb_update").click();
+		getDriver().findElementById("sysverb_update").click();
 
 		return new AllIncidentHomePage();
 
 	}
 
 	public IncidentDetailsPage checkStateAndUregency() {
-		Select urgencyDropdown1 = new Select(driver.findElementByName("incident.urgency"));
+		Select urgencyDropdown1 = new Select(getDriver().findElementByName("incident.urgency"));
 
 		String updatedUrgency = urgencyDropdown1.getFirstSelectedOption().getText();
 
-		Select stateDropdown1 = new Select(driver.findElementByName("incident.state"));
+		Select stateDropdown1 = new Select(getDriver().findElementByName("incident.state"));
 
 		String updatedState = stateDropdown1.getFirstSelectedOption().getText();
 
@@ -71,48 +71,48 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 	}
 
 	public IncidentDetailsPage selectAssignmentGroup() {
-		driver.findElementById("lookup.incident.assignment_group").click();
+		getDriver().findElementById("lookup.incident.assignment_group").click();
 
-		Set<String> windowHandles = driver.getWindowHandles();
+		Set<String> windowHandles = getDriver().getWindowHandles();
 
 		List<String> windowHandlesList = new ArrayList<String>(windowHandles);
 
-		driver.switchTo().window(windowHandlesList.get(1));
+		getDriver().switchTo().window(windowHandlesList.get(1));
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys("Software");
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys("Software");
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
 
-		driver.findElementByXPath("//a[text()='Software']").click();
+		getDriver().findElementByXPath("//a[text()='Software']").click();
 
-		driver.switchTo().window(windowHandlesList.get(0));
+		getDriver().switchTo().window(windowHandlesList.get(0));
 
-		driver.switchTo().frame("gsft_main");
+		getDriver().switchTo().frame("gsft_main");
 
 		return this;
 
 	}
 
 	public IncidentDetailsPage updateWorkNotes() {
-		driver.findElementById("activity-stream-textarea").sendKeys("Assigned ticket to Software group");
+		getDriver().findElementById("activity-stream-textarea").sendKeys("Assigned ticket to Software group");
 		return this;
 	}
 
 	public IncidentDetailsPage updateResolutionInfo() {
 
-		driver.findElementByXPath("//span[text()='Resolution Information']").click();
+		getDriver().findElementByXPath("//span[text()='Resolution Information']").click();
 
-		Select resolutionCode = new Select(driver.findElementById("incident.close_code"));
+		Select resolutionCode = new Select(getDriver().findElementById("incident.close_code"));
 
 		resolutionCode.selectByVisibleText("Solved (Work Around)");
 
-		driver.findElementById("incident.close_notes").sendKeys("Ticket resolved");
+		getDriver().findElementById("incident.close_notes").sendKeys("Ticket resolved");
 
 		return this;
 	}
 
 	public IncidentDetailsPage verifyResolutionCode() {
-		Select updResolutionCode = new Select(driver.findElementByName("incident.state"));
+		Select updResolutionCode = new Select(getDriver().findElementByName("incident.state"));
 
 		System.out.println(updResolutionCode.getFirstSelectedOption().getText());
 
@@ -122,9 +122,9 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	public AllIncidentHomePage deleteIncident() {
 
-		driver.findElementById("sysverb_delete").click();
+		getDriver().findElementById("sysverb_delete").click();
 
-		driver.findElementById("ok_button").click();
+		getDriver().findElementById("ok_button").click();
 
 		return new AllIncidentHomePage();
 

@@ -13,35 +13,47 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.ReadFromExcel;
 
-public class ProjectSpecificMethods {
+public class ProjectSpecificMethods extends AbstractTestNGCucumberTests {
 
-	public static RemoteWebDriver driver;
+	private static final ThreadLocal<RemoteWebDriver> remoteWebDriver = new ThreadLocal<RemoteWebDriver>();
 	public static String incidentNo;
 	public static String browser = "chrome";
 	public String excelFilename;
 	public static ReadFromExcel excelData;
-
+	public String testName, testDescription, testAuthor, testCategory;
 	public static ArrayList<String> listOfIncident = new ArrayList<String>();
+
+	public void setDriver() {
+		remoteWebDriver.set(new ChromeDriver());
+	}
+
+	public RemoteWebDriver getDriver() {
+		return remoteWebDriver.get();
+	}
 
 //	@Parameters({"browser","URL"})
 	@BeforeMethod
 	public void launchApp() {
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			setDriver();
+//			driver = new ChromeDriver();
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+//			driver = new FirefoxDriver();
 		} else if (browser.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
-			driver = new InternetExplorerDriver();
+//			driver = new InternetExplorerDriver();
 		}
-		driver.get("https://dev100062.service-now.com/");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		getDriver().get("https://dev100062.service-now.com/");
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
 	}
 
 	@DataProvider(name = "fetchData")
@@ -57,7 +69,7 @@ public class ProjectSpecificMethods {
 	@AfterMethod
 	public void closeApp() {
 
-		driver.close();
+		getDriver().close();
 
 	}
 

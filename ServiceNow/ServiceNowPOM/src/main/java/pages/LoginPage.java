@@ -1,27 +1,33 @@
 package pages;
 
 import base.ProjectSpecificMethods;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class LoginPage extends ProjectSpecificMethods {
-
+	
+	@Given("Enter the username as {string}")
 	public LoginPage enterUsername(String username) {
-		driver.switchTo().frame("gsft_main");
+		getDriver().switchTo().frame("gsft_main");
 
-		driver.findElementById("user_name").sendKeys(username);
+		getDriver().findElementById("user_name").sendKeys(username);
 
 		return this;
 
 	}
-
+	
+	@When("Enter the password as {string}")
 	public LoginPage enterPassword(String password) {
-		driver.findElementById("user_password").sendKeys(password);
+		getDriver().findElementById("user_password").sendKeys(password);
 
 		return this;
 
 	}
 
+	@Then("Click on Login Button")
 	public ServiceNowHomePage clickOnLoginButton() throws InterruptedException {
-		driver.findElementById("sysverb_login").click();
+		getDriver().findElementById("sysverb_login").click();
 
 		Thread.sleep(5000);
 		

@@ -8,52 +8,57 @@ import java.util.Set;
 import org.openqa.selenium.Keys;
 
 import base.ProjectSpecificMethods;
+import io.cucumber.java.en.Then;
 
 public class CreateIncident extends ProjectSpecificMethods {
-
+	
+	@Then("Select the caller name as {string}")
 	public CreateIncident selectCaller(String caller) throws InterruptedException {
-		driver.findElementById("lookup.incident.caller_id").click();
+		getDriver().findElementById("lookup.incident.caller_id").click();
 
-		Set<String> windowHandles = driver.getWindowHandles();
+		Set<String> windowHandles = getDriver().getWindowHandles();
 
 		List<String> windowHandlesList = new ArrayList<String>(windowHandles);
 
-		driver.switchTo().window(windowHandlesList.get(1));
+		getDriver().switchTo().window(windowHandlesList.get(1));
 		
 		Thread.sleep(2000);
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(caller);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(caller);
 
-		driver.findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
+		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(Keys.ENTER);
 
-		driver.findElementByXPath("//a[text()='" + caller + "']").click();
+		getDriver().findElementByXPath("//a[text()='" + caller + "']").click();
 
-		driver.switchTo().window(windowHandlesList.get(0));
+		getDriver().switchTo().window(windowHandlesList.get(0));
 
 		return this;
 
 	}
 
+	@Then("Enter the short description {string}")
 	public CreateIncident enterShotDesc(String desc) {
-		driver.switchTo().frame("gsft_main");
+		getDriver().switchTo().frame("gsft_main");
 
-		driver.findElementById("incident.short_description").sendKeys(desc);
+		getDriver().findElementById("incident.short_description").sendKeys(desc);
 
 		return this;
 
 	}
-
+	
+	@Then("Get the new incident number")
 	public CreateIncident getNewIncidentNumber() throws IOException {
 
-		incidentNo = driver.findElementById("incident.number").getAttribute("value");
+		incidentNo = getDriver().findElementById("incident.number").getAttribute("value");
 
 		listOfIncident.add(incidentNo);
 
 		return this;
 	}
 
+	@Then("Click on Submit button")
 	public AllIncidentHomePage clickOnSubmitButton() {
-		driver.findElementById("sysverb_insert_bottom").click();
+		getDriver().findElementById("sysverb_insert_bottom").click();
 
 		return new AllIncidentHomePage();
 

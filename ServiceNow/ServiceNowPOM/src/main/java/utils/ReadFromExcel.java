@@ -14,7 +14,7 @@ public class ReadFromExcel extends ProjectSpecificMethods {
 
 	public String[][] readExcel(String filename) throws IOException {
 
-		XSSFWorkbook wb = new XSSFWorkbook("./data/" + filename + ".xlsx");
+		XSSFWorkbook wb = new XSSFWorkbook("./dlta/" + filename + ".xlsx");
 
 		XSSFSheet ws = wb.getSheetAt(0);
 
