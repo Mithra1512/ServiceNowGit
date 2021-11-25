@@ -11,7 +11,7 @@ import base.ProjectSpecificMethods;
 import io.cucumber.java.en.Then;
 
 public class CreateIncident extends ProjectSpecificMethods {
-	
+
 	@Then("Select the caller name as {string}")
 	public CreateIncident selectCaller(String caller) throws InterruptedException {
 		getDriver().findElementById("lookup.incident.caller_id").click();
@@ -21,7 +21,7 @@ public class CreateIncident extends ProjectSpecificMethods {
 		List<String> windowHandlesList = new ArrayList<String>(windowHandles);
 
 		getDriver().switchTo().window(windowHandlesList.get(1));
-		
+
 		Thread.sleep(2000);
 
 		getDriver().findElementByXPath("//input[@placeholder='Search']").sendKeys(caller);
@@ -45,7 +45,7 @@ public class CreateIncident extends ProjectSpecificMethods {
 		return this;
 
 	}
-	
+
 	@Then("Get the new incident number")
 	public CreateIncident getNewIncidentNumber() throws IOException {
 
@@ -57,9 +57,10 @@ public class CreateIncident extends ProjectSpecificMethods {
 	}
 
 	@Then("Click on Submit button")
-	public AllIncidentHomePage clickOnSubmitButton() {
+	public AllIncidentHomePage clickOnSubmitButton() throws IOException {
 		getDriver().findElementById("sysverb_insert_bottom").click();
 
+//		writeToexcel();
 		return new AllIncidentHomePage();
 
 	}

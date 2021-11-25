@@ -1,16 +1,27 @@
 package pages;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.ProjectSpecificMethods;
+import io.cucumber.java.en.Then;
 
 public class IncidentDetailsPage extends ProjectSpecificMethods {
 
+	@Then("Update the urgency")
 	public IncidentDetailsPage updateUrgency() {
 		Select urgencyDropdown = new Select(getDriver().findElementByName("incident.urgency"));
 
@@ -20,6 +31,7 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	}
 
+	@Then("Update the the state as {string}")
 	public IncidentDetailsPage updateState(String state) {
 		Select stateDropdown = new Select(getDriver().findElementByName("incident.state"));
 
@@ -29,11 +41,15 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	}
 
-	public IncidentDetailsPage checkPriority() {
+	@Then("Check the priority")
+	public IncidentDetailsPage checkPriority() throws InterruptedException {
+
+//		Thread.sleep(1000);
+
 		Select priorityDropdown = new Select(getDriver().findElementByName("incident.priority"));
 
 		String priority = priorityDropdown.getFirstSelectedOption().getText();
-
+		System.out.println(priority);
 		if (priority.contentEquals("3 - Moderate")) {
 			System.out.println("Priority has changed");
 		}
@@ -41,6 +57,7 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 		return this;
 	}
 
+	@Then("Click on update")
 	public AllIncidentHomePage clickOnUpdate() {
 		getDriver().findElementById("sysverb_update").click();
 
@@ -48,6 +65,7 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	}
 
+	@Then("Check the updated state and urgency")
 	public IncidentDetailsPage checkStateAndUregency() {
 		Select urgencyDropdown1 = new Select(getDriver().findElementByName("incident.urgency"));
 
@@ -65,11 +83,14 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 		{
 			System.out.println("State is updated");
+
 		}
+
 		return this;
 
 	}
 
+	@Then("Select the assignment group")
 	public IncidentDetailsPage selectAssignmentGroup() {
 		getDriver().findElementById("lookup.incident.assignment_group").click();
 
@@ -93,11 +114,35 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	}
 
-	public IncidentDetailsPage updateWorkNotes() {
-		getDriver().findElementById("activity-stream-textarea").sendKeys("Assigned ticket to Software group");
+	@Then("Update the work notes for {string}")
+	public IncidentDetailsPage updateWorkNotes(String testcase) {
+
+		/*
+		 * WebElement workNotes =
+		 * getDriver().findElementById("activity-stream-textarea");
+		 * 
+		 * WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(2));
+		 * wait.until(ExpectedConditions.elementToBeClickable(workNotes));
+		 */
+		/*
+		 * JavascriptExecutor Js1 = (JavascriptExecutor) getDriver();
+		 * Js1.executeScript("window.scrollBy(10,1000)");
+		 */
+		
+		switch (testcase) {
+		case "Update Incident":
+			getDriver().findElementById("activity-stream-textarea").sendKeys("State and Urgency updated");
+			break;
+
+		case "Assign Incident":
+			getDriver().findElementById("activity-stream-textarea").sendKeys("Incident assigned to Software group");
+			break;
+		}
+
 		return this;
 	}
 
+	@Then("Update the resolution info")
 	public IncidentDetailsPage updateResolutionInfo() {
 
 		getDriver().findElementByXPath("//span[text()='Resolution Information']").click();
@@ -111,6 +156,7 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 		return this;
 	}
 
+	@Then("Verify the resolution code")
 	public IncidentDetailsPage verifyResolutionCode() {
 		Select updResolutionCode = new Select(getDriver().findElementByName("incident.state"));
 
@@ -120,9 +166,17 @@ public class IncidentDetailsPage extends ProjectSpecificMethods {
 
 	}
 
-	public AllIncidentHomePage deleteIncident() {
+	@Then("Click on delete")
+	public AllIncidentHomePage deleteIncident() throws IOException {
 
 		getDriver().findElementById("sysverb_delete").click();
+		
+		File source = getDriver().getScreenshotAs(OutputType.FILE);
+		
+		File target = new File("./snapshots/deletepopup.jpeg");
+		
+		FileUtils.copyFile(source, target);
+		
 
 		getDriver().findElementById("ok_button").click();
 

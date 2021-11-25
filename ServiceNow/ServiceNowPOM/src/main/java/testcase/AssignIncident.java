@@ -3,9 +3,11 @@ package testcase;
 import java.io.IOException;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.ProjectSpecificMethods;
+import io.cucumber.testng.CucumberOptions;
 import pages.LoginPage;
 
 public class AssignIncident extends ProjectSpecificMethods {
@@ -19,9 +21,9 @@ public class AssignIncident extends ProjectSpecificMethods {
 	@Test(dataProvider = "fetchData", priority = 2)
 	public void updateIncident(String incidentNumber) throws InterruptedException, IOException {
 		new LoginPage().enterUsername("admin").enterPassword("qjX0QPUtYvb6").clickOnLoginButton().enterSearchText()
-				.clickOnAllIncident().switchToframe().selectSearchField().searchIncident(incidentNumber).selectAssignmentGroup().updateWorkNotes().clickOnUpdate();
-		
-		//Comment 1
+				.clickOnAllIncident().switchToframe().selectSearchField().searchIncident(incidentNumber)
+				.selectAssignmentGroup().updateWorkNotes().clickOnUpdate();
+
 	}
 
 }

@@ -3,17 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcase.CreateNewIncident">
+      <class name="testcase.CucumberRunner">
         <methods>
           <include name="setUpClass"/>
           <include name="runScenario" invocation-numbers="0"/>
           <include name="tearDownClass"/>
-          <include name="setFilename"/>
+          <include name="getIncidentNoFromExcel"/>
           <include name="closeApp"/>
-          <include name="writeToexcel"/>
           <include name="launchApp"/>
         </methods>
-      </class> <!-- testcase.CreateNewIncident -->
+      </class> <!-- testcase.CucumberRunner -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

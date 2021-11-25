@@ -5,10 +5,11 @@
     <classes>
       <class name="testcase.CreateNewIncident">
         <methods>
+          <include name="setUpClass"/>
           <include name="createNewIncident" invocation-numbers="0 1"/>
+          <include name="tearDownClass"/>
           <include name="setFilename"/>
           <include name="closeApp"/>
-          <include name="writeToexcel"/>
           <include name="launchApp"/>
         </methods>
       </class> <!-- testcase.CreateNewIncident -->

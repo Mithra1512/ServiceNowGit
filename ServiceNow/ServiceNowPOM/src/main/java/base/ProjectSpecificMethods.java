@@ -11,21 +11,27 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
+import io.cucumber.java.Before;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pages.AllIncidentHomePage;
 import utils.ReadFromExcel;
 
 public class ProjectSpecificMethods extends AbstractTestNGCucumberTests {
 
 	private static final ThreadLocal<RemoteWebDriver> remoteWebDriver = new ThreadLocal<RemoteWebDriver>();
+//	public ChromeDriver driver;
 	public static String incidentNo;
 	public static String browser = "chrome";
 	public String excelFilename;
 	public static ReadFromExcel excelData;
 	public String testName, testDescription, testAuthor, testCategory;
 	public static ArrayList<String> listOfIncident = new ArrayList<String>();
+	public static ArrayList<String> readIncidentNumber;
 
 	public void setDriver() {
 		remoteWebDriver.set(new ChromeDriver());
@@ -35,9 +41,17 @@ public class ProjectSpecificMethods extends AbstractTestNGCucumberTests {
 		return remoteWebDriver.get();
 	}
 
+	@BeforeSuite
+	public void getIncidentNoFromExcel() throws IOException {
+		ReadFromExcel readIncident = new ReadFromExcel();
+
+		readIncidentNumber = readIncident.readIncidentNumber();
+
+	}
+
 //	@Parameters({"browser","URL"})
 	@BeforeMethod
-	public void launchApp() {
+	public void launchApp() throws IOException {
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			setDriver();
@@ -73,7 +87,7 @@ public class ProjectSpecificMethods extends AbstractTestNGCucumberTests {
 
 	}
 
-	@AfterClass
+//	@AfterClass
 	public void writeToexcel() throws IOException {
 
 		excelData = new ReadFromExcel();

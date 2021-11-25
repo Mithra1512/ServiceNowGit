@@ -14,7 +14,7 @@ public class ReadFromExcel extends ProjectSpecificMethods {
 
 	public String[][] readExcel(String filename) throws IOException {
 
-		XSSFWorkbook wb = new XSSFWorkbook("./dlta/" + filename + ".xlsx");
+		XSSFWorkbook wb = new XSSFWorkbook("./data/" + filename + ".xlsx");
 
 		XSSFSheet ws = wb.getSheetAt(0);
 
@@ -34,6 +34,28 @@ public class ReadFromExcel extends ProjectSpecificMethods {
 		wb.close();
 
 		return data;
+
+	}
+
+	public ArrayList<String> readIncidentNumber() throws IOException {
+		XSSFWorkbook wb = new XSSFWorkbook("./data/IncidentManagement.xlsx");
+
+		XSSFSheet ws = wb.getSheetAt(0);
+
+		int rowCount = ws.getLastRowNum();
+
+		int cellCount = ws.getRow(0).getLastCellNum();
+
+		ArrayList<String> incidentNumbers = new ArrayList<String>();
+
+		for (int i = 1; i <= rowCount; i++) {
+			for (int j = 0; j < cellCount; j++) {
+				String cellValue = ws.getRow(i).getCell(j).getStringCellValue();
+				incidentNumbers.add(cellValue);
+			}
+		}
+
+		return incidentNumbers;
 
 	}
 

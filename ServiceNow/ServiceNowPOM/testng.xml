@@ -4,10 +4,10 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="testcase.CreateNewIncident" />
-			<class name="testcase.AssignIncident" />
+<!-- 			<class name="testcase.AssignIncident" />
 			<class name="testcase.UpdateIncident" />
 			<class name="testcase.ResolveIncident" />
-			<class name="testcase.DeleteIncident" />
+			<class name="testcase.DeleteIncident" /> -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

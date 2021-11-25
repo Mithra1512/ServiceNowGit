@@ -2,31 +2,35 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="80367" started-at="2021-11-14T20:02:21 IST" finished-at="2021-11-14T20:03:42 IST">
+  <suite name="Default suite" duration-ms="73031" started-at="2021-11-24T13:12:26 IST" finished-at="2021-11-24T13:13:39 IST">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="80367" started-at="2021-11-14T20:02:21 IST" finished-at="2021-11-14T20:03:42 IST">
-      <class name="testcase.CreateNewIncident">
-        <test-method status="PASS" signature="setFilename()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="setFilename" is-config="true" duration-ms="0" started-at="2021-11-14T20:02:21 IST" finished-at="2021-11-14T20:02:21 IST">
+    <test name="Default test" duration-ms="73031" started-at="2021-11-24T13:12:26 IST" finished-at="2021-11-24T13:13:39 IST">
+      <class name="testcase.CucumberRunner">
+        <test-method status="PASS" signature="getIncidentNoFromExcel()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="getIncidentNoFromExcel" is-config="true" duration-ms="308" started-at="2021-11-24T13:12:25 IST" finished-at="2021-11-24T13:12:26 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setFilename -->
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="setUpClass" is-config="true" duration-ms="320" started-at="2021-11-14T20:02:21 IST" finished-at="2021-11-14T20:02:22 IST">
+        </test-method> <!-- getIncidentNoFromExcel -->
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="setUpClass" is-config="true" duration-ms="336" started-at="2021-11-24T13:12:26 IST" finished-at="2021-11-24T13:12:26 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="launchApp()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="launchApp" is-config="true" duration-ms="9065" started-at="2021-11-14T20:02:22 IST" finished-at="2021-11-14T20:02:31 IST">
+        <test-method status="PASS" signature="launchApp()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="launchApp" is-config="true" duration-ms="10349" started-at="2021-11-24T13:12:26 IST" finished-at="2021-11-24T13:12:36 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApp -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="runScenario" duration-ms="26741" started-at="2021-11-14T20:02:31 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-11-14T20:02:58 IST">
+        <test-method status="PASS" signature="launchApp()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="launchApp" is-config="true" duration-ms="11053" started-at="2021-11-24T13:12:26 IST" finished-at="2021-11-24T13:12:37 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApp -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="runScenario" duration-ms="52609" started-at="2021-11-24T13:12:36 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-11-24T13:13:29 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To Create a new incident in serviceNow"]]>
+                <![CDATA["To Delete a incident in serviceNow"]]>
               </value>
             </param>
             <param index="1">
@@ -38,19 +42,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="closeApp()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="closeApp" is-config="true" duration-ms="4116" started-at="2021-11-14T20:02:58 IST" finished-at="2021-11-14T20:03:02 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeApp -->
-        <test-method status="PASS" signature="launchApp()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="launchApp" is-config="true" duration-ms="9951" started-at="2021-11-14T20:03:02 IST" finished-at="2021-11-14T20:03:12 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- launchApp -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="runScenario" duration-ms="23537" started-at="2021-11-14T20:03:12 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-11-14T20:03:35 IST">
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="runScenario" duration-ms="54040" started-at="2021-11-24T13:12:37 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-11-24T13:13:31 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To Create a new incident in serviceNow"]]>
+                <![CDATA["To Delete a incident in serviceNow"]]>
               </value>
             </param>
             <param index="1">
@@ -62,19 +58,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="closeApp()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="closeApp" is-config="true" duration-ms="4124" started-at="2021-11-14T20:03:35 IST" finished-at="2021-11-14T20:03:39 IST">
+        <test-method status="PASS" signature="closeApp()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="closeApp" is-config="true" duration-ms="4119" started-at="2021-11-24T13:13:29 IST" finished-at="2021-11-24T13:13:33 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeApp -->
-        <test-method status="PASS" signature="writeToexcel()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="writeToexcel" is-config="true" duration-ms="961" started-at="2021-11-14T20:03:39 IST" finished-at="2021-11-14T20:03:40 IST">
+        <test-method status="PASS" signature="closeApp()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="closeApp" is-config="true" duration-ms="111" started-at="2021-11-24T13:13:31 IST" finished-at="2021-11-24T13:13:31 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- writeToexcel -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:testcase.CreateNewIncident@4df828d7]" name="tearDownClass" is-config="true" duration-ms="1526" started-at="2021-11-14T20:03:40 IST" finished-at="2021-11-14T20:03:42 IST">
+        </test-method> <!-- closeApp -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:testcase.CucumberRunner@6a79c292]" name="tearDownClass" is-config="true" duration-ms="5607" started-at="2021-11-24T13:13:33 IST" finished-at="2021-11-24T13:13:39 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- testcase.CreateNewIncident -->
+      </class> <!-- testcase.CucumberRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
