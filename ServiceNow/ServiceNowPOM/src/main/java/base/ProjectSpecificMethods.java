@@ -58,9 +58,11 @@ public class ProjectSpecificMethods extends AbstractTestNGCucumberTests {
 //			driver = new ChromeDriver();
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
+			setDriver();
 //			driver = new FirefoxDriver();
 		} else if (browser.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
+			setDriver();
 //			driver = new InternetExplorerDriver();
 		}
 
